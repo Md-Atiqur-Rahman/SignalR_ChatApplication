@@ -1,0 +1,71 @@
+﻿
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row" style="background-color: #b6ff00;">
+        <div class="col-12" style="height: 180px; background-color:#b6ff00; margin-top:5px;">
+            <h1 style="color:white;text-align:center;font-size:48pt;">
+                <img src="~/pictures/text_welcome_7.gif" />
+                <img src="~/pictures/student_person.gif" style="width:300px;" />
+
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div style="float:left;" >
+            
+
+
+            @*<input type="button" ng-click="UserGroup()" value="Group list"/>*@
+            @*<ul ng-model="GroupUName">*@
+
+
+            <ul>
+
+                @*<li ng-repeat="n in GroupUName" id="gp" ng-model="gnme">*@
+                <li ng-repeat="n in gnme" id="gp" ng-model="gnme">
+
+                    {{n}}
+                </li>
+
+            </ul>
+        </div>
+        <div >
+            <form name="exampleForm" class="myForm" style="width: 600px">
+                <div id="dvmsg" style="padding:10px;width:400px;margin-left:325px;border:solid; border-radius:20px;margin-top:20px;">
+
+                    <div style="height:400px;overflow:auto;">
+                        <div ng-repeat="m in chatMessage" style="word-wrap: break-word;background-color:#e0ecf2;margin:10px;padding:10px;border-radius:20px;">
+
+
+                            <div ng-show="{{m.str}}">
+
+                                {{m.Name}}:{{m.Msg}}
+                            </div>
+                            <div ng-show="{{m.img}}">
+                                You : <img src="http://localhost:2352{{m.Msg}}" alt="Image" />
+                            </div>
+                            <div ng-show="{{m.others}}">
+                                You : <a href="http://localhost:2352{{m.Msg}}" target="_blank">View</a>
+                            </div>
+                        </div>
+
+                    </div>   <br />
+
+
+
+
+
+
+                    <input type="text" placeholder="mesage" ng-model="messag" name="msg" style="width: 700px;height:50px; " required />
+
+                    <input type="button" value="Send" ng-click="sendchat()" ng-disabled="exampleForm.$invalid" class="btn btn-success" />
+                    <input type="file" id="file" name="file" onchange="angular.element(this).scope().setFile(this)" accept="image/*" class="btn btn-primary" style="width:600px;" />
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+}
